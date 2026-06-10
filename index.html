@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Primer Aniversario ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#090909;
+color:white;
+overflow:hidden;
+}
+
+.screen{
+width:100vw;
+height:100vh;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:30px;
+position:absolute;
+top:0;
+left:0;
+}
+
+.active{
+display:flex;
+animation:fadeIn 1s;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+h1{
+font-size:clamp(2rem,5vw,4rem);
+margin-bottom:20px;
+}
+
+h2{
+font-weight:300;
+margin-bottom:20px;
+}
+
+p{
+max-width:700px;
+line-height:1.8;
+}
+
+button{
+padding:15px 35px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+font-size:1rem;
+font-weight:600;
+margin:10px;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.primary{
+background:white;
+color:black;
+}
+
+.heart-big{
+font-size:120px;
+cursor:pointer;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.2);}
+100%{transform:scale(1);}
+}
+
+.stars{
+position:fixed;
+inset:0;
+z-index:-1;
+overflow:hidden;
+}
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 4s infinite;
+}
+
+@keyframes twinkle{
+50%{
+opacity:.1;
+}
+}
+
+.photo{
+width:min(85vw,500px);
+height:65vh;
+object-fit:cover;
+border-radius:25px;
+box-shadow:0 0 40px rgba(255,255,255,.2);
+margin-bottom:25px;
+animation:zoomIn 1.2s;
+}
+
+@keyframes zoomIn{
+from{
+opacity:0;
+transform:scale(.8);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.quiz-buttons{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.carta-box{
+max-width:850px;
+background:white;
+color:black;
+padding:40px;
+border-radius:25px;
+line-height:2;
+font-size:1.1rem;
+box-shadow:0 0 30px rgba(255,255,255,.15);
+}
+
+#typed{
+min-height:250px;
+text-align:left;
+}
+
+.contador{
+font-size:4rem;
+font-weight:700;
+color:#ff7db4;
+}
+
+.final-heart{
+position:fixed;
+font-size:25px;
+pointer-events:none;
+animation:fall 5s linear forwards;
+}
+
+@keyframes fall{
+from{
+transform:translateY(-100px);
+opacity:1;
+}
+to{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+.memoria{
+font-size:1.2rem;
+margin-bottom:30px;
+max-width:700px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- PANTALLA 1 -->
+
+<section class="screen active" id="s1">
+
+<h1>❤️ Feliz Primer Aniversario ❤️</h1>
+
+<div class="heart-big" onclick="show(2)">
+❤️
+</div>
+
+<h2>Toca el corazón para comenzar</h2>
+
+</section>
+
+<!-- PANTALLA 2 -->
+
+<section class="screen" id="s2">
+
+<h1>Antes de continuar...</h1>
+
+<h2>¿Cuánto me amas? 😌</h2>
+
+<div class="quiz-buttons">
+<button class="primary" onclick="show(3)">Muchísimo ❤️</button>
+<button class="primary" onclick="show(3)">Demasiado ❤️</button>
+<button class="primary" onclick="show(3)">Infinito ❤️</button>
+</div>
+
+</section>
+
+<!-- PANTALLA 3 -->
+
+<section class="screen" id="s3">
+
+<img src="FOTO 2.JPG" class="photo">
+
+<h2>Hace exactamente un año comenzó nuestra historia ✨</h2>
+
+<button class="primary" onclick="show(4)">
+Siguiente →
+</button>
+
+</section>
+
+<!-- PANTALLA 4 -->
+
+<section class="screen" id="s4">
+
+<img src="FOTO 3.JPG" class="photo">
+
+<h2>Gracias por todas las risas y aventuras ❤️</h2>
+
+<button class="primary" onclick="mostrarRecuerdo()">
+Mostrar Recuerdo ✨
+</button>
+
+<p class="memoria" id="recuerdo"></p>
+
+<button class="primary" onclick="show(5)">
+Continuar →
+</button>
+
+</section>
+
+<!-- PANTALLA 5 -->
+
+<section class="screen" id="s5">
+
+<img src="FOTO 4.JPEG" class="photo">
+
+<h2>¿Quién tiene siempre la razón? 😂</h2>
+
+<div>
+<button class="primary" onclick="respuesta()">Tú ❤️</button>
+<button class="primary" onclick="respuesta()">Tú ❤️</button>
+<button class="primary" onclick="respuesta()">Tú ❤️</button>
+</div>
+
+</section>
+
+<!-- PANTALLA 6 -->
+
+<section class="screen" id="s6">
+
+<img src="FOTO 5.JPEG" class="photo">
+
+<h1>Mi lugar favorito ❤️</h1>
+
+<h2>Siempre has sido tú.</h2>
+
+<button class="primary" onclick="carta()">
+Leer Carta 💌
+</button>
+
+</section>
+
+<!-- PANTALLA 7 -->
+
+<section class="screen" id="s7">
+
+<div class="carta-box">
+
+<h1>💌 Para Ti 💌</h1>
+
+<div id="typed"></div>
+
+<br>
+
+<button class="primary" onclick="show(8)">
+Seguir ❤️
+</button>
+
+</div>
+
+</section>
+
+<!-- PANTALLA 8 -->
+
+<section class="screen" id="s8">
+
+<h1>Hemos compartido...</h1>
+
+<div class="contador">365</div>
+
+<h2>días increíbles juntos ❤️</h2>
+
+<button class="primary" onclick="finale()">
+Abrir Regalo 🎁
+</button>
+
+</section>
+
+<!-- PANTALLA 9 -->
+
+<section class="screen" id="s9">
+
+<h1>❤️ FELIZ PRIMER ANIVERSARIO ❤️</h1>
+
+<h2>
+Gracias por este año maravilloso.
+</h2>
+
+<h2>
+Te elegiría una y otra vez.
+</h2>
+
+<br>
+
+<h1>✨ Te Amo ✨</h1>
+
+</section>
+
+<script>
+
+for(let i=0;i<200;i++){
+
+const star=document.createElement("div");
+
+star.classList.add("star");
+
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+star.style.animationDelay=Math.random()*5+"s";
+
+document.getElementById("stars").appendChild(star);
+
+}
+
+function show(n){
+
+document.querySelectorAll(".screen")
+.forEach(s=>s.classList.remove("active"));
+
+document.getElementById("s"+n)
+.classList.add("active");
+
+}
+
+function respuesta(){
+
+alert("OBVIO 😌❤️");
+
+show(6);
+
+}
+
+const recuerdos=[
+"Nuestro primer abrazo ❤️",
+"La primera foto juntos ❤️",
+"Las risas que solo nosotros entendemos ❤️",
+"Las llamadas interminables ❤️",
+"Los momentos difíciles que superamos juntos ❤️",
+"Todo este año contigo ❤️"
+];
+
+function mostrarRecuerdo(){
+
+const random=
+recuerdos[Math.floor(Math.random()*recuerdos.length)];
+
+document.getElementById("recuerdo").innerText=random;
+
+}
+
+function carta(){
+
+show(7);
+
+const texto = `Hoy cumplimos un año juntos.
+
+Quiero darte las gracias más infinitas que existen, porque llegaste justo cuando no buscaba nada, cuando mi alma estaba en calma y sin prisa. Sin darme cuenta, cada palabra tuya, cada risa, cada momento a tu lado fueron tejiendo, hilo a hilo, el amor más hermoso que he conocido.
+
+Sé que el camino no ha sido sencillo. Nos encontramos con tormentas que sacudieron lo que teníamos, con lluvias que no esperábamos. Pero ¿sabes qué es lo más hermoso de todo eso? Que después de cada tormenta, siempre apareció un arcoíris. Siempre.
+
+Y lo sé porque aquí estoy, a las cuatro de la madrugada, creando algo para ti. Porque aunque a veces parezca que no escucho, siempre lo hago. Siempre te escucho, te veo, te siento, te sueño. Cada mañana lo primero que hago es darte gracias a Dios por ti, porque el amor que te tengo no tiene fecha de vencimiento.
+
+Hoy quiero decirte que te elijo. Quiero una vida a tu lado, un perro o dos, viajar a todos los lugares a los que nos lleve el viento. Pero siempre contigo. Solo contigo.
+Te amo muchísimo ❤️`;
+
+const target = document.getElementById("typed");
+
+target.innerHTML = texto;
+
+}
+
+function finale(){
+
+show(9);
+
+setInterval(()=>{
+
+const heart=document.createElement("div");
+
+heart.classList.add("final-heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(Math.random()*30+15)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+},150);
+
+}
+
+</script>
+
+</body>
+</html>
